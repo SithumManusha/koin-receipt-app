@@ -15,19 +15,23 @@ export function ExpenseRow({ expense, highlight }: { expense: Expense; highlight
     if (!highlight) return;
     Animated.parallel([
       Animated.timing(appear, { toValue: 1, duration: 320, useNativeDriver: true }),
-      Animated.timing(flash, { toValue: 0, duration: 2400, delay: 400, useNativeDriver: false }),
+      Animated.timing(flash, { toValue: 0, duration: 2400, delay: 400, useNativeDriver: true }),
     ]).start();
   }, [highlight, appear, flash]);
-
-  const bg = flash.interpolate({ inputRange: [0, 1], outputRange: ['rgba(16,185,129,0)', 'rgba(16,185,129,0.14)'] });
 
   return (
     <Animated.View
       style={[
         styles.row,
-        { backgroundColor: bg, opacity: appear, transform: [{ translateY: appear.interpolate({ inputRange: [0, 1], outputRange: [-10, 0] }) }] },
+        { opacity: appear, transform: [{ translateY: appear.interpolate({ inputRange: [0, 1], outputRange: [-10, 0] }) }] },
       ]}
     >
+      {highlight ? (
+        <Animated.View
+          pointerEvents="none"
+          style={[StyleSheet.absoluteFill, styles.flashOverlay, { opacity: flash }]}
+        />
+      ) : null}
       <CategoryBadge category={expense.category} />
       <View style={styles.mid}>
         <AppText weight="medium" size={16} numberOfLines={1}>{expense.merchant}</AppText>
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row', alignItems: 'center', paddingVertical: 14, marginHorizontal: 24,
     borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.borderStrong,
+    overflow: 'hidden',
+  },
+  flashOverlay: {
+    backgroundColor: 'rgba(16,185,129,0.14)',
+    borderRadius: 10,
   },
   mid: { flex: 1, marginLeft: 12, marginRight: 12 },
 });
