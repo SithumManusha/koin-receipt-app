@@ -2,10 +2,22 @@
   "expo": {
     "name": "Koin",
     "slug": "koin-receipt-app",
+    "owner": "sithummnausha",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/555bd0ff-ab34-40ce-9d6b-ebe6cb7fe224"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "555bd0ff-ab34-40ce-9d6b-ebe6cb7fe224"
+      }
+    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.koin.receiptapp"
