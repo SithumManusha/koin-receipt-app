@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Koin",
+    "slug": "koin-receipt-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.koin.receiptapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.koin.receiptapp"
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "koin",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Koin needs access to your photos so you can pick a receipt to scan.",
+          "cameraPermission": "Koin uses the camera so you can snap a receipt."
+        }
+      ]
+    ]
+  }
+}
